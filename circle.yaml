@@ -1,4 +1,13 @@
 dependencies:
   override:
-    - /bin/bash -x ./gradlew dependencies
-
+    - /bin/bash -x gradlew dependencies
+test:
+  pre:
+    - emulator -avd circleci-android22 -no-audio -no-window:
+        background: true
+        parallel: true
+    - circle-android wait-for-boot
+    override:
+      - /bin/bash -x gradlew assembleRelease
+      - adb install /home/ubuntu/ref-android/app/build/outputs/apk/app-release-unsigned.apk
+      - /bin/bash -x gradlew connectedAndroidTest
