@@ -21,4 +21,7 @@ android {
 
 dependencies {
 	compile fileTree(dir: 'libs', include: ['*.jar'])
+
+	// Unit testing dependencies
+	testCompile 'junit:junit:4.12'
 }
