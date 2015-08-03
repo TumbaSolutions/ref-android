@@ -1,4 +1,0 @@
-dependencies:
-  override:
-    - /bin/bash -x ./gradlew dependencies
-
