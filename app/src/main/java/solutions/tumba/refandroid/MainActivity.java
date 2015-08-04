@@ -13,7 +13,12 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
+
+        // enable Crashlytics
+        if (BuildConfig.USE_CRASHLYTICS) {
+            Fabric.with(this, new Crashlytics());
+        }
+
         setContentView(R.layout.activity_main);
     }
 
