@@ -1,7 +1,7 @@
 test:
   override:
-    # unit test app
-    - ./gradlew testRelease
+    # assemble app & run unit test(s)
+    - ./gradlew assemble test
 
     # start the emulator
     - emulator -avd circleci-android21 -no-audio -no-window:
