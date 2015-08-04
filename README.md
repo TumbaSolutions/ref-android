@@ -1,3 +1,3 @@
 # ref-android
 
-https://circleci.com/gh/TumbaSolutions/ref-android.svg?style=shield
+![CircleCI build status](https://circleci.com/gh/TumbaSolutions/ref-android.svg?style=shield)
