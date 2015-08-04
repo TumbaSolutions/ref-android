@@ -1,7 +1,7 @@
 test:
   override:
     # unit test app
-    - ./gradlew test
+    - ./gradlew testRelease
 
     # start the emulator
     - emulator -avd circleci-android21 -no-audio -no-window:
@@ -17,3 +17,13 @@ test:
     - cp -r app/build/outputs/* $CIRCLE_ARTIFACTS
     # copy the test results to the test results directory.
     - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+
+deployment:
+# to be added
+#  production:
+#    branch: master
+
+  crashlytics:
+    branch: master
+    commands:
+      - ./gradlew crashlyticsUploadDistributionRelease
