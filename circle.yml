@@ -1,7 +1,7 @@
 test:
   override:
     # assemble app & run unit test(s)
-    - ./gradlew assemble test
+    - ./gradlew clean assemble test -PdisablePreDex
 
     # start the emulator
     - emulator -avd circleci-android21 -no-audio -no-window:
