@@ -8,9 +8,10 @@ ARTIFACT="@app/build/outputs/apk/app-release.apk"
 REQUEST_URL="https://api.github.com/repos/TumbaSolutions/ref-android/releases"
 
 #Create the release
-#curl -H "$HEADER2" -H "$HEADER1" -d "$REQUEST_BODY"  -X POST "$REQUEST_URL"
+curl -H "$HEADER2" -H "$HEADER1" -d "$REQUEST_BODY"  -X POST "$REQUEST_URL"
 
 #Strip the upload URL from the release data
+curl -H "Authorization: token $GITHUB_OAUTH_TOKEN" $REQUEST_URL/tags/v0.0.$CIRCLE_BUILD_NUM
 UPLOAD_URL=`curl -H "Authorization: token $GITHUB_OAUTH_TOKEN" $REQUEST_URL/tags/v0.0.$CIRCLE_BUILD_NUM | grep upload_url | awk '{print $2}' | sed -r 's/\{\?name,label\}",?|"//g'`
 
 #Upload the apk to Github releases
