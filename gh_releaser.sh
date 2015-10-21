@@ -1,13 +1,14 @@
 #!/bin/bash 
 
-REQUEST_BODY='{ "tag_name": "v0.0.'"$CIRCLE_BUILD_NUM"'", "target_commitish": "master", "name": "v0.0.'"$CIRCLE_BUILD_NUM"'", "body": "Release descrinption" }'
+RELEASE_NOTES=`cat ./release_notes`
+REQUEST_BODY='{ "tag_name": "v0.0.'"$CIRCLE_BUILD_NUM"'", "target_commitish": "master", "name": "v0.0.'"$CIRCLE_BUILD_NUM"'", "body": "'"$RELEASE_NOTES"'" }'
 HEADER1="Content-Type: application/json"
 HEADER2="Authorization: token $GITHUB_OAUTH_TOKEN"
 HEADER3="Content-Type: application/octet-stream"
 ARTIFACT="@app/build/outputs/apk/app-release.apk"
 REQUEST_URL="https://api.github.com/repos/TumbaSolutions/ref-android/releases"
 
-#Create the release
+#Create the release and notes in Github
 curl -H "$HEADER2" -H "$HEADER1" -d "$REQUEST_BODY"  -X POST "$REQUEST_URL"
 
 #Strip the upload URL from the release data
