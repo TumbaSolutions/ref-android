@@ -1,3 +1,1 @@
-# Release number v0.0$CIRCLE_BUILD_NUM
- - Insert the release notes here
-## This is a test release 
+# Release number v0.0$CIRCLE_BUILD_NUM\n - Insert the release notes here\n## This is a test release 
