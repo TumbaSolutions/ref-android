@@ -20,6 +20,8 @@ test:
   post:
     - git log  --oneline master > CHANGELOG.md
     - sed 's/\!github\.com/github\.com/g' /home/ubuntu/.ssh/config
+    - git config user.name "git"
+    - git config user.email "dimitar.damyanov@insitex.com"
     - git add CHANGELOG.md
     - git commit -m '[ci skip] updated CHANGELOG'
 deployment:
