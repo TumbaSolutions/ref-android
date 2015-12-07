@@ -17,7 +17,12 @@ test:
     - cp -r app/build/outputs/* $CIRCLE_ARTIFACTS
     # copy the test results to the test results directory.
     - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
-
+  post:
+    - git log  --oneline master > CHANGELOG.md
+    - git config user.name "circleci"
+    - git config user.email "dimitar.damyanov@insitex.com"
+    - git add CHANGELOG.md
+    - git commit -m '[ci skip] updated CHANGELOG'
 deployment:
 # to be added
 #  production:
@@ -28,7 +33,4 @@ deployment:
     commands:
       - ./gradlew crashlyticsUploadDistributionRelease
       - /bin/bash -x gh_releaser.sh
-      - git log  --oneline master > CHANGELOG.md 
-      - git add CHANGELOG.md
-      - git commit -m '[ci skip] updated CHANGELOG'
       - git push 
