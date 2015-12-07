@@ -19,8 +19,7 @@ test:
     - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
   post:
     - git log  --oneline master > CHANGELOG.md
-    - git config user.name "circleci"
-    - git config user.email "dimitar.damyanov@insitex.com"
+    - sed 's/\!github\.com/github\.com/g' /home/ubuntu/.ssh/config
     - git add CHANGELOG.md
     - git commit -m '[ci skip] updated CHANGELOG'
 deployment:
