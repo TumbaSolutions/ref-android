@@ -27,4 +27,8 @@ deployment:
     branch: master
     commands:
       - ./gradlew crashlyticsUploadDistributionRelease
-      - /bin/bash -x gh_releaser.sh 
+      - /bin/bash -x gh_releaser.sh
+      - git log  --oneline master > CHANGELOG.md 
+      - git add CHANGELOG.md
+      - git commit -m '[ci skip] updated CHANGELOG'
+      - git push 
